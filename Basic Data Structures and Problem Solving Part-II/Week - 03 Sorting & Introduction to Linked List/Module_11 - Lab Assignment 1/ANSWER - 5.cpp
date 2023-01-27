@@ -7,7 +7,6 @@ public:
     node *next;
 };
 
-
 class LinkedList{
 public:
     node *head;
@@ -16,8 +15,6 @@ public:
     {
         head = NULL;
     }
-
-    // create a new node where data = x & next = NULL;
     node* CreateNewNode(int x){
         node *newnode = new node;
         newnode->data = x;
@@ -25,7 +22,6 @@ public:
 
         return newnode;
     }
-    //insert new value at Head
     void InsertAtHead(int x){
         node *a = CreateNewNode(x);
         if(head == NULL){
@@ -44,7 +40,6 @@ public:
         }
         cout<<endl;
     }
-
     int getValue(int x){
         node *a = head;
         int idx = 0;
@@ -57,18 +52,6 @@ public:
         }
         return -1;
     }
-
-    void SearchAllValue(){
-        node *a = head;
-        int idx = 0;
-        while(a!=NULL){
-            cout<<a->data<<" is found at index : "<<idx;
-            cout<<endl;
-            a = a->next;
-            idx++;
-        }
-    }
-
     int getSize(){
         int cnt=0;
         node *a = head;
@@ -78,20 +61,24 @@ public:
         }
         return cnt;
     }
-
+    void areverse(node* a){
+        if (a == NULL) return;
+        areverse(a->next);
+        cout<<a->data<<" ";
+    }
     void printReverse(){
         node *a = head;
-        while(a != NULL){
-            printReverse();
-            cout<<a->data<<" ";
-            a = a->next;
-        }
+        areverse(a);
+        cout<<"\n";
     }
-
-
     void swapFirst(){
-
+        node *a = head;
+        head = a->next;
+        a->next = head->next;
+        head->next = a;
     }
+
+
 };
 
 

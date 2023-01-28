@@ -31,7 +31,7 @@ vector<int> merge_sort(vector<int>a){
             ind1++;
         }
 
-        else if(sorted_left[ind1]<sorted_right[ind2]){
+        else if(sorted_left[ind1] <= sorted_right[ind2]){
             sorted_a.push_back(sorted_left[ind1]);
             ind1++;
         }
@@ -46,7 +46,7 @@ vector<int> merge_sort(vector<int>a){
 
 int main()
 {
-    vector<int> x = {1, 2, 6, 3};
+    vector<int> x = {1, 2, 0, 7, 6, 6, 3, 4, 9};
     vector<int>ans = merge_sort(x);
     for(int i=0; i<ans.size(); i++)
         cout<<ans[i]<<" ";

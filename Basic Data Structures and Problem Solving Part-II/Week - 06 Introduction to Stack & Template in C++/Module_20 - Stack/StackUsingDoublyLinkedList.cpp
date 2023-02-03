@@ -56,15 +56,6 @@ public:
         sz--;
     }
 
-    void Traverse(){
-        node *a = head;
-        while(a != NULL){
-            cout<<a->data<<" ";
-            a = a->next;
-        }
-        cout<<endl;
-    }
-
 };
 
 //Stack Using Linked List

@@ -86,7 +86,6 @@ public:
         }
         dl.DeleteAtHead();
     }
-
 };
 
 int main()

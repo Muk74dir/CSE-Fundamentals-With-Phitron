@@ -6,7 +6,6 @@ class Stack{
 public:
     Stack()
     {
-
     }
 
     T print(T value)

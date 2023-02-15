@@ -13,12 +13,14 @@ public:
     node *head;
     node *tail;
     int sz;
+    int rev;
 
     Deque()
     {
         head = NULL;
         tail = NULL;
         sz = 0;
+        rev = 0;
     }
 
     node *CreateNode(int value)
@@ -29,27 +31,11 @@ public:
         newnode->next = NULL;
         return newnode;
     }
-
-    void push_back(int value)
+    void InsertAtTail(int value)
     {
-        node *a = CreateNode(value);
-        if(sz == 0)
-        {
-            head = a;
-            tail = a;
-        }
-        else
-        {
-            tail->next = a;
-            a->prev = tail;
-            a->next = NULL;
-            tail = a;
-        }
-        sz++;
-        cout<<"OK"<<endl;
-    }
 
-    void push_front(int value)
+    }
+    void InsertAtHead(int value)
     {
         node *a = CreateNode(value);
         if(sz == 0)
@@ -68,33 +54,24 @@ public:
         sz++;
     }
 
-    void pop_back()
+    void push_back(int value)
     {
-        if(sz == 1)
+        if(rev==0)
         {
-            cout<<"OK"<<endl;
-            delete tail;
-            head = NULL;
-            tail = NULL;
-        }
-        else if(sz == 0)
-        {
-            cout<<"Already Empty\n";
-            return;
+            InsertAtTail(value);
         }
         else
         {
-            cout<<"OK"<<endl;
-            node *a = tail;
-            tail = tail->prev;
-            tail->next = NULL;
-            delete a;
-
+            InsertAtHead(value);
         }
-        sz--;
     }
 
-    void pop_front()
+    void push_front(int value)
+    {
+        if(rev==0)InsertAtHead(value);
+        else InsertAtTail(value);
+    }
+    void DeleteFirst()
     {
         if(sz == 0)
         {
@@ -120,15 +97,55 @@ public:
         sz--;
     }
 
+    void DeleteLast()
+    {
+        if(sz == 1)
+        {
+            cout<<"OK"<<endl;
+            delete tail;
+            head = NULL;
+            tail = NULL;
+        }
+        else if(sz == 0)
+        {
+            cout<<"Already Empty\n";
+            return;
+        }
+        else
+        {
+            cout<<"OK"<<endl;
+            node *a = tail;
+            tail = tail->prev;
+            tail->next = NULL;
+            delete a;
+
+        }
+        sz--;
+    }
+
+    void pop_back()
+    {
+        if(rev==0)DeleteLast();
+        else DeleteFirst();
+    }
+
+    void pop_front()
+    {
+        if(rev==0)DeleteFirst();
+        else DeleteLast();
+    }
+
     void front()
     {
         if(sz==0){cout<<"Deque is Empty"<<endl;return;}
-        else{cout<<head->data<<endl;}
+        if(rev == 0){cout<<head->data<<endl;}
+        else{cout<<tail->data<<endl;}
     }
 
     void back(){
         if(sz==0){cout<<"Deque is Empty"<<endl;return;}
-        else{cout<<tail->data<<endl;}
+        if(rev == 0){cout<<tail->data<<endl;}
+        else{cout<<head->data<<endl;}
     }
 
     void Traverse()
@@ -146,6 +163,13 @@ public:
         cout<<sz<<endl;
     }
 
+    //Reverse a Deque in O(1)
+    void Reverse()
+    {
+        if(rev == 0){rev = 1;}
+        else {rev = 0;}
+    }
+
 };
 
 int main()
@@ -155,41 +179,9 @@ int main()
     d.push_back(20);
     d.push_back(30);
     d.push_back(40);
-    cout<<endl;
+    d.Reverse();
 
     cout<<"Deque : ";d.Traverse();
-    cout<<"FRONT : ";d.front(); cout<<"BACK : ";d.back();
-
-
-    d.push_front(60);
-    d.push_front(70);
-    d.push_back(80);
-    cout<<"Deque : ";d.Traverse();
-    cout<<"FRONT : ";d.front(); cout<<"BACK : ";d.back();
-    cout<<"SIZE : ";d.size();
-
-
-    d.pop_front();
-    d.pop_front();
-    cout<<"Deque : ";d.Traverse();
-
-    d.pop_back();
-    d.pop_back();
-    cout<<"Deque : ";d.Traverse();
-    cout<<"SIZE : ";d.size();
-
-
-
-    d.pop_front();
-    d.pop_front();
-    cout<<"Deque : ";d.Traverse();
-    cout<<"SIZE : ";d.size();
-
-    d.pop_back();
-    d.pop_front();
-    cout<<"SIZE : ";d.size();
-    d.front();
-    d.back();
 
 
 

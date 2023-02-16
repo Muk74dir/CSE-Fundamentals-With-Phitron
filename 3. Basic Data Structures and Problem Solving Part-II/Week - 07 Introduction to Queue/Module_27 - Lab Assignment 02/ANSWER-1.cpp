@@ -28,32 +28,27 @@
         delete [] new_a;
      }
 
-
-
-     void Enqueue (T value)
-     {
+    void Enqueue (T value)
+    {
         if(r+1 >= cap){Resize();}
         r++;
         a[r] = value;
         sz++;
-     }
-
-     void Dequeue()
-     {
-         if(l > r){cout<<"ALREADY EMPTY!!"<<endl;return;}
-         else {l++; sz--;}
-     }
-
-     void front()
-     {
-         if(l > r){cout<<"EMPTY!!"<<endl;return;}
-         cout<<a[l]<<endl;
-     }
-
-    int size()
-    {
-         return sz;
     }
+
+    void Dequeue()
+    {
+        if(l > r){cout<<"ALREADY EMPTY!!"<<endl;return;}
+        else {l++; sz--;}
+    }
+
+    void front()
+    {
+        if(l > r){cout<<"EMPTY!!"<<endl;return;}
+        cout<<a[l]<<endl;
+    }
+
+    int size(){return sz;}
 
 };
 
@@ -97,4 +92,5 @@ int main()
     }
     cout<<"SIZE AFTER DEQUEUE : "<<que2.size()<<endl;
 
+    return 0;
 }

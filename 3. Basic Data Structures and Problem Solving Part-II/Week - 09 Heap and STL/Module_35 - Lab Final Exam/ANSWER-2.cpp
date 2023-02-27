@@ -12,15 +12,18 @@ class DLL{
 public:
     node *head;
     node *tail;
+    int sz;
 
     DLL()
     {
         head = NULL;
         tail = NULL;
+        sz = 0;
     }
 
     node *CreateNode(int value)
     {
+        sz++;
         node *newnode = new node;
         newnode->prev = NULL;
         newnode->data = value;
@@ -35,11 +38,11 @@ public:
         {
             head = temp;
             tail = temp;
+            return;
         }
-        node *a = head;
-        a->next = temp;
-        temp->prev = a;
-        head = a;
+        temp->next = head;
+        head->prev = temp;
+        head = temp;
     }
 
     void insertTail(int value)
@@ -49,32 +52,56 @@ public:
         {
             head = temp;
             tail = temp;
+            return;
         }
-        node *a = tail;
-        a->next = temp;
-        temp->prev = a;
+        temp->prev = tail;
+        tail->next = temp;
         tail = temp;
     }
 
     void insertMid(int value)
     {
+        if(sz < 2){
+            insertTail(value);
+            return;
+        }
+        int ind = 0;
+        node *temp = head;
+        while(ind < (sz/2)-1){
+            ind++;
+            temp = temp->next;
+        }
+
+        node *newnode = CreateNode(value);
+        newnode->next = temp->next;
+        temp->next->prev = newnode;
+        temp->next = newnode;
+        newnode->prev = temp;
 
     }
 
     void print()
     {
-        node *a = head;
-        while(tail.prev != NULL){
-            a = a->next;
+        node *temp = head;
+        while(temp != NULL){
+            cout<<temp->data<<" ";
+            temp = temp->next;
         }
+        cout<<endl;
     }
 };
 
-
-
 int main()
 {
-
+    DLL dl;
+    dl.insertHead(5);
+    dl.insertHead(5);
+    dl.insertHead(5);
+    dl.insertTail(3);
+    dl.insertTail(8);
+    dl.insertTail(9);
+    dl.insertMid(1000);
+    dl.print();
 
     return 0;
 }

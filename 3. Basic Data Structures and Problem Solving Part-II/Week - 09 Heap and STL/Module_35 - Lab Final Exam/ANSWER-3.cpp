@@ -8,13 +8,13 @@ public:
     node *next;
 };
 
-class DLL{
+class LinkedList{
 public:
     node *head;
     node *tail;
     int sz;
 
-    DLL()
+    LinkedList()
     {
         head = NULL;
         tail = NULL;
@@ -90,7 +90,7 @@ public:
         cout<<endl;
     }
 
-    void merge(DLL temp)
+    void Merge(LinkedList temp)
     {
         tail->next = temp.head;
         temp.head->prev = tail;
@@ -99,28 +99,28 @@ public:
 
 int main()
 {
-    DLL dl;
-    dl.insertHead(5);
-    dl.insertHead(5);
-    dl.insertHead(5);
-    dl.insertTail(3);
-    dl.insertTail(8);
-    dl.insertTail(9);
-    dl.insertMid(1000);
-    dl.print();
+    LinkedList a;
+    LinkedList b;
+    a.insertHead(1);
+    a.insertTail(5);
+    a.insertMid(3);
+    a.insertHead(0);
+    a.insertTail(10);
 
-    DLL dl2;
-    dl2.insertHead(50);
-    dl2.insertHead(50);
-    dl2.insertHead(50);
-    dl2.insertTail(30);
-    dl2.insertTail(80);
-    dl2.insertTail(90);
-    dl2.insertMid(9999);
-    dl2.print();
+    a.print(); // prints 0 1 3 5 10
 
-    dl.merge(dl2);
-    dl.print();
+    b.insertHead(10);
+    b.insertTail(50);
+    b.insertMid(30);
+    b.insertHead(9);
+    b.insertTail(100);
+
+    b.print(); // prints 9 10 30 50 100
+
+    a.Merge(b);
+
+    a.print(); // prints 0 1 3 5 10 9 10 30 50 100
+    b.print(); // prints 9 10 30 50 100
 
     return 0;
 }

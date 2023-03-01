@@ -3,23 +3,22 @@ using namespace std;
 
 int main()
 {
-    int temp;
-    set<int>x;
-    vector<int>v;
-
     int t;cin>>t;
-    for(int i=0; i<t; i++){
-        v.push_back(cin>>temp);
-    }
-
-    for(auto it = x.begin(); it != x.end(); it++){
-        cout<<*it<<" ";
-    }
-
-    int t2;cin>>t2;
-    for(auto it = x.begin(); it != x.end(); it++){
+    set<int>st;
+    int temp;
+    for(int i = 0; i<t; i++){
         cin>>temp;
-        x.insert(temp);
+        st.insert(temp);
+    }
+
+    cin>>t;
+    for(int i=0; i<t; i++){
+        cin>>temp;
+        st.insert(temp);
+    }
+
+    for(auto it = st.begin(); it!= st.end(); it++){
+        cout<<*it<<" ";
     }
 
     return 0;

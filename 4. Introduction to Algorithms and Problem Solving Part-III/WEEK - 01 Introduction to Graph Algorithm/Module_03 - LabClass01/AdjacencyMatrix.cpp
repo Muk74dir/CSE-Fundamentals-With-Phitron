@@ -47,7 +47,7 @@ int main()
     matrix[1][0] = 1;
 
     matrix[1][2] = 1;
-    matrix[2][1] = 1;
+    /**/matrix[2][1] = 5 ; ///if Directed and Weighted
 
     matrix[1][3] = 1;
     matrix[3][1] = 1;

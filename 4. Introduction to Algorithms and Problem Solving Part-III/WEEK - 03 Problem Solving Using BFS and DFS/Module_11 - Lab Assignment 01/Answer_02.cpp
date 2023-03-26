@@ -40,6 +40,7 @@ int main()
     for(int i=0; i<e; i++){
         int f, t;cin>>f>>t;
         adj_list[f].push_back(t);
+        adj_list[t].push_back(f);
     }
 
     bfs(0);

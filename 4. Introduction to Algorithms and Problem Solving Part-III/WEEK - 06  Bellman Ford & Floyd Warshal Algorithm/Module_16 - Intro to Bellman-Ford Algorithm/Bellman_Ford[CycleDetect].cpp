@@ -2,7 +2,6 @@
 using namespace std;
 const int INF = 1e9;
 const int N = 1e5 + 5;
-
 vector<pair<int, int>>adj_list[N];
 int d[N];
 

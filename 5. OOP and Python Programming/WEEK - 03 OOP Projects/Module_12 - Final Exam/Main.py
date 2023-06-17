@@ -65,8 +65,5 @@ def main():
     user_3.transaction_history(brac_bank)
     user_1.transaction_history(ab_bank)
 
-    
-
-
 if __name__ == "__main__":
     main()

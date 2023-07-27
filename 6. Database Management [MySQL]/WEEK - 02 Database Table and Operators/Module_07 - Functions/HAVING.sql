@@ -1,3 +1,5 @@
-USE hr;  
-ALTER TABLE employees
-ADD test VARCHAR(20);
+USE hr;
+SELECT job_id, COUNT(*)
+FROM employees
+GROUP BY job_id
+HAVING COUNT(*) > 1;

@@ -10,9 +10,9 @@ CREATE TABLE customers(
 CREATE TABLE orders(
 	id INT, 
     customer_id INT
-    FOREIGN KEY (customer_id)
-		REFERENCES customers(id)
-        ON DELETE CASCADE
+    -- FOREIGN KEY (customer_id)
+-- 		REFERENCES customers(id)
+--         ON DELETE CASCADE
 );
 
 INSERT INTO customers(id, _name)
@@ -31,9 +31,9 @@ VALUES (1, 101),
         (4, 108),
         (5, 110);
         
-SELECT id, _name 
-FROM customers
-UNION
-SELECT id, customer_id
-FROM orders;
-
+SELECT C._name
+FROM customers AS C
+LEFT JOIN
+orders AS O
+ON (C.id = O.customer_id)
+WHERE O.customer_id IS NULL;

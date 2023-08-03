@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="{% static 'first_app/css/style.css' %} "/>
+</head>
+<body>
+    <img src="" alt="">
+    <h1>We are inside app</h1>
+    <h1>Author name : {{Author}}</h1> <!-- from backed -->
+    <img class = "blast" src="{% static 'first_app/images\blast.png'  %} " alt="this is image" height="400px" weidth="800px" />
+    <!-- If else in DTL -->
+    {% if age >= 18%} 
+    <p>You can get driving license</p>
+    {% else %}
+    <p>You are a baby</p>
+    {% endif %}
+
+    {% if marks >= 80 %}
+    <p>Grade A+</p>
+    {% elif marks >= 70 and marks <= 79%}
+    <p>Grade A</p>
+    {% elif marks >= 40 and marks <= 69%}
+    <p>Grade B</p>
+    {% else %}
+    <p>Fail</p>
+    {% endif %}
+    
+    <table border='1' width='500'>
+        <tr>
+           <th>Id</th> 
+           <th>Course</th>
+           <th>Teacher</th>
+        </tr>
+        <!-- For LOOP in DTL -->>
+            {% for i in courses %}
+            <tr></tr>
+            <td>{{i.id}}</td>
+            <td>{{i.course}}</td>
+            <td>{{i.teacher}}</td>
+            {% endfor %}
+        </tr>
+    </table>
+
+    <!-- Filters in DTL -->
+
+    <!-- Add Value -->
+    <h1> Marks : {{ mark | add:"10" }} </h1>
+
+    <!-- Divisble Check -->
+    <h1>Divisiblity : {{ mark | divisibleby:"3" }} </h1>
+
+    <!-- Length -->
+    <h1 >Length : {{ name | length }} </h1>
+    <h1>Word Count : {{ blog | wordcount}} </h1>
+
+    <!-- Truncate Word -->
+    <h1>Truncate Word : {{ blog | truncatewords:5 }} </h1>
+    <h1>Truncate Word : {{ blog | truncatewords:"10" }} </h1>
+
+    <!-- Make List -->
+    <h1>Make List : {{name | make_list }} </h1>
+
+    <!-- Upper/Lower CASE -->
+    <h1> Upper Case : {{name | upper }}</h1>
+    <h1> Lower Case : {{name | lower }}</h1>
+
+    <!-- JOIN -->
+    <h2> JOIN : {{name | join:'+'}} </h2>
+    <h2> JOIN : {{lst | join:', '}} </h2>
+
+
+</body>
+</html>

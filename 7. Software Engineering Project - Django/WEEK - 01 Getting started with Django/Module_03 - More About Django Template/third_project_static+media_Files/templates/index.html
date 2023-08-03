@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Third Project</title>
+    <!-- Normal CSS link in HTML -->
+    <link rel="stylesheet" href="static/css/style.css">
+    <!-- This is the way to link css file in django by Django Template -->
+    <link rel="stylesheet" href="{% static 'css/style.css'%}">
+    
+    <script src="{% static 'js/index.js'%}"></script>
+</head>
+<body justify-content: "space-between" >
+    <h1>This is My First Ever Template in Django</h1>
+    <img src="static/images/natok1.png" alt="Natok Image" height='200px' width='400'/>
+    <img src="static/images/natok2.png" alt="Natok Image" height='200px' width='400'/>
+    <!--Sourcing images by Django Template-->
+    <img src="{% static 'images/stranger.png' %}" alt="Natok Image" height='200px' width='400'/>
+
+    <!--Another Method-->
+    <img src="{% get_static_prefix %}images/natok1.png " alt="another method" height='200px' width='400'/>
+
+    <!--Shortcut Method-->
+    {% static 'images/stranger.png' as stranger %}
+    <img src="{{stranger}}" height='200px' width='400'/>
+</body>
+</html>

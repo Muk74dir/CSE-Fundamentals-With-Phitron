@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% load first_tag %}
+
+{% block title %}About Page{% endblock title %}
+{% block content %}About Page 
+<h1>{{Author}}</h1>
+<h1>{{Author | changed_name:'title' }}</h1>
+
+<!-- Template Tag -->
+{% show_courses %}
+
+
+{% endblock content %}

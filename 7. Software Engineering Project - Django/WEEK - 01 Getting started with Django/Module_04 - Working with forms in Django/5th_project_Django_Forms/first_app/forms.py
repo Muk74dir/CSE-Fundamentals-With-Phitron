@@ -84,3 +84,24 @@ class StudentData(forms.Form):
             raise forms.ValidationError('Name must be 10 character long')
 
     file = forms.FileField(validators=[file_exe])
+    
+    
+class PasswordValidationProject(forms.Form):
+    name = forms.CharField(widget=forms.TextInput)
+    password = forms.CharField(widget=forms.PasswordInput)
+    confirm_password = forms.CharField(widget=forms.PasswordInput)
+    
+    def clean(self):
+        self.cleaned_data = super().clean()
+        user_name = self.cleaned_data['name']
+        val_pass = self.cleaned_data['password']
+        con_pass = self.cleaned_data['confirm_password']
+        
+        if len(user_name) > 15:
+            raise forms.ValidationError('Username must be 15 character long')
+        
+        if val_pass != con_pass:
+            raise forms.ValidationError('Password does not match')
+        
+        
+            

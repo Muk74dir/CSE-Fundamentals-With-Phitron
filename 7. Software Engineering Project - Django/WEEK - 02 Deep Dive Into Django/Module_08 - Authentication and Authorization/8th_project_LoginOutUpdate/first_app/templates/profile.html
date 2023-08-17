@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block body %}
+<div class="text-center mt-5" >
+    <h1>Welcome to Profile</h1>
+    <h2>Hello {{user}}</h2>
+    <p class='mt-5' ><button class='btn btn-warning' ><a style="text-decoration:none;" class='text-black' href="{% url 'reset_with_old_pass_page' %}"> Change Your Password with old </a></button>
+    <button class='btn btn-warning' ><a style="text-decoration:none;" class='text-black' href="{% url 'reset_without_old_pass_page' %}"> Change Your Password without old</a></button></p>
+    <p class='mt-5' ><button class='btn btn-info' ><a style="text-decoration:none;" class='text-black' href="{% url 'update_userdata' %}"> Update Your Data </a></button>
+</div>
+
+{% endblock body %}

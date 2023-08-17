@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block body %}
+    {% if messages %}
+    {% for message in messages %}
+    <p {% if m.tags %} class="{{m.tags}}" {% endif %} >{{message}}</p>
+    {% endfor %}
+    {% endif %}
+    {% block filup %}
+    <form method="POST" style="width:50%; margin:auto;" novalidate >
+        <h1 class="mt-5 mb-5" >Sign-Up Page </h1>
+        {% csrf_token %}
+        <!--{{form|crispy}}-->   {% comment "" %}SHOULDN"T DELETE THIS LINE{% endcomment %}
+        {% for fm in form%}
+        {{fm.label_tag}}
+        {{fm}}
+        {{fm.errors | striptags}}
+        {% endfor %}
+        <div class="text-center mt-5" >
+            <button class="btn btn-primary" type="submit">Sign Up</button>
+            <p class="mt-3">Already Have an Accout? <a href=" {% url 'loginpage' %} ">login</a> </p>
+        </div>
+        
+    </form>
+    {% endblock filup %}
+
+{% endblock body %}
+
